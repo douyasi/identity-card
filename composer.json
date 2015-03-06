@@ -1,0 +1,19 @@
+{
+	"name": "douyasi/identity-card",
+	"description": "Chinese Identity Card package",
+	"keywords": ["identity", "personal identity card", "Chinese"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "raoyc",
+			"email": "rayc2009@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Douyasi\\IdentityCard\\": ""
+		}
+	},
+	"minimum-stability": "stable",
+	"require": {}
+}

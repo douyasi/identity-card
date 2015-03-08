@@ -8,9 +8,9 @@
  * [6位地区码][8位生日码][3位随机码][1位校验码]
  * 
  * @package Douyasi\IdentityCard
- * @author raoyc<raoyc2009@gmail.com>
+ * @author raoyc <raoyc2009@gmail.com>
  */
- 
+
 class ID {
 	
 	//中华人民共和国省级行政区划代码(不含港澳台地区)

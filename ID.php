@@ -5,17 +5,15 @@ namespace Douyasi\IdentityCard;
 /**
  * Class ID
  * 中国大陆地区身份证类
- * 根据 GB/T 2260-2007中华人民共和国行政区划代码 来验证国内公民身份证证号合法性
- * 
+ * 根据 GB/T 2260-2007中华人民共和国行政区划代码 来验证国内公民身份证证号合法性.
+ *
  * 310107 19970507 055 6
  * [6位地区码][8位生日码][3位随机码][1位校验码]
- * 
- * @package Douyasi\IdentityCard
+ *
  * @author raoyc <raoyc2009@gmail.com>
  */
-
-class ID {
-
+class ID
+{
     //中华人民共和国省级行政区划代码(不含港澳台地区)
     protected $aProvinces = array(
         '11' => '北京',
@@ -48,7 +46,7 @@ class ID {
         '62' => '甘肃',
         '63' => '青海',
         '64' => '宁夏',
-        '65' => '新疆'
+        '65' => '新疆',
     );
 
     //GB/T 2260-2007中华人民共和国行政区划代码
@@ -3576,14 +3574,15 @@ class ID {
         '659004' => '五家渠市',
         '710000' => '台湾省',
         '810000' => '香港特别行政区',
-        '820000' => '澳门特别行政区'
+        '820000' => '澳门特别行政区',
     );
 
     /**
-     * 通过正则表达式初步检测身份证证号非法性
-     * 
+     * 通过正则表达式初步检测身份证证号非法性.
+     *
      * @param string $pid 传入的个人身份证证号
-     * @return boolean 通过返回true，否则返回false
+     *
+     * @return bool 通过返回true，否则返回false
      */
     private function checkFirst($pid)
     {
@@ -3591,18 +3590,20 @@ class ID {
     }
 
     /**
-     * 验证身份证是否合法
-     * 
+     * 验证身份证是否合法.
+     *
      * @param string $pid 个人身份证证号
-     * @return boolean 合法，则返回true，失败则返回false
+     *
+     * @return bool 合法，则返回true，失败则返回false
      */
-    public function validateIDCard($pid) {
+    public function validateIDCard($pid)
+    {
         $pid = strtoupper($pid);
         if ($this->checkFirst($pid)) {
             //第一步正则检测
-            $iYear = substr ( $pid, 6, 4 );
-            $iMonth = substr ( $pid, 10, 2 );
-            $iDay = substr ( $pid, 12, 2 );
+            $iYear = substr($pid, 6, 4);
+            $iMonth = substr($pid, 10, 2);
+            $iDay = substr($pid, 12, 2);
             if (checkdate($iMonth, $iDay, $iYear)) {
                 //第二步检测身份证日期
                 $idcard_base = substr($pid, 0, 17);  //身份证证号前17位
@@ -3620,11 +3621,13 @@ class ID {
 
     /**
      * 根据身份证前17位计算身份证最后一位校验码
-     * 
+     *
      * @param string $idcard_base
+     *
      * @return string
      */
-    private function getIDCardVerifyNumber($idcard_base){
+    private function getIDCardVerifyNumber($idcard_base)
+    {
         // 加权因子
         $factor = array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
         // 校验码对应值
@@ -3635,29 +3638,32 @@ class ID {
         }
         $mod = $checksum % 11;
         $verify_number = $verify_number_list[$mod];
+
         return $verify_number;
     }
 
     /**
-     * 根据身份证证号获取所在地区
-     * 
+     * 根据身份证证号获取所在地区.
+     *
      * @param string $pid 个人身份证证号
+     *
      * @return array 结果数组，示例：
-     *      array(
-     *          'status'  => true|false,  //校验状态
-     *          'result'  => '湖北省 黄冈市黄梅县' | '',  //完整地区
-     *          'provice' => '湖北省',  //省级
-     *          'city'    => '黄冈市',  //市级
-     *          'county'  => '黄梅县',  //县级
-     *      )
-     *  校验成功    则
-     *          array['status']返回true,
-     *          array['result']返回所在地区信息，需要特定的省市县级可以取对应的键名;
-     *  校验失败    则
-     *          array['status']返回false,
-     *          array['result']其它等均返回空串''.
+     *               array(
+     *               'status'  => true|false,  //校验状态
+     *               'result'  => '湖北省 黄冈市黄梅县' | '',  //完整地区
+     *               'provice' => '湖北省',  //省级
+     *               'city'    => '黄冈市',  //市级
+     *               'county'  => '黄梅县',  //县级
+     *               )
+     *               校验成功    则
+     *               array['status']返回true,
+     *               array['result']返回所在地区信息，需要特定的省市县级可以取对应的键名;
+     *               校验失败    则
+     *               array['status']返回false,
+     *               array['result']其它等均返回空串''.
      */
-    public function getArea($pid) {
+    public function getArea($pid)
+    {
         $Provinces = $this->aProvinces;
         $Divisions = $this->aDivisions;
         $provice = substr($pid, 0, 2);
@@ -3665,73 +3671,76 @@ class ID {
         $sufix_city = substr($pid, 0, 4).'00';  //获取地级行政区划代码
         $county = substr($pid, 0, 6);  //获取县级行政区划代码
         $result = '';
-        
+
         if (!array_key_exists($provice, $Provinces)) {
             // 非法地区
             return array(
-                        'status'  => false,
-                        'result'  => '',
-                        'provice' => '', 
-                        'city'    => '', 
-                        'county'  => ''
+                        'status' => false,
+                        'result' => '',
+                        'provice' => '',
+                        'city' => '',
+                        'county' => '',
                     );
         } else {
-            if (array_key_exists( $county , $Divisions)) {
-            //县级行政区划代码
+            if (array_key_exists($county, $Divisions)) {
+                //县级行政区划代码
                 $result = $Divisions[$sufix_provice].' '.$Divisions[$sufix_city].''.$Divisions[$county];
 
                 return array(
-                            'status'  => true,
-                            'result'  => $result,
+                            'status' => true,
+                            'result' => $result,
                             'provice' => $Divisions[$sufix_provice],
-                            'city'    => $Divisions[$sufix_city],
-                            'county'  => $Divisions[$county]
+                            'city' => $Divisions[$sufix_city],
+                            'county' => $Divisions[$county],
                         );
             } else {
                 return array(
-                            'status'  => false,
-                            'result'  => '',
-                            'provice' => '', 
-                            'city'    => '', 
-                            'county'  => ''
+                            'status' => false,
+                            'result' => '',
+                            'provice' => '',
+                            'city' => '',
+                            'county' => '',
                         );
             }
         }
     }
 
     /**
-     * 获取性别
-     * 
+     * 获取性别.
+     *
      * @param string $pid 个人身份证证号
-     * @return string|boolean 返回'f'表示女，返回'm'表示男，身份证未校验通过则返回false
+     *
+     * @return string|bool 返回'f'表示女，返回'm'表示男，身份证未校验通过则返回false
      */
-    public function getGender($pid) {
+    public function getGender($pid)
+    {
         if ($this->validateIDCard($pid)) {
             $gender = substr($pid, 16, 1);  //倒数第2位
-            return ($gender%2 == 0) ? 'f' : 'm';
+            return ($gender % 2 == 0) ? 'f' : 'm';
         } else {
             return false;
         }
     }
 
     /**
-     * 获取出生年月日信息
-     * 
-     * @param string $pid 个人身份证证号
+     * 获取出生年月日信息.
+     *
+     * @param string $pid    个人身份证证号
      * @param string $format 日期格式 默认为'Y-m-d'
-     * @return string|boolean 返回特定日期格式的数据，如'1990-01-01'，身份证或出生年月日未校验通过则返回false
+     *
+     * @return string|bool 返回特定日期格式的数据，如'1990-01-01'，身份证或出生年月日未校验通过则返回false
      */
-    public function getBirth($pid, $format = 'Y-m-d') {
+    public function getBirth($pid, $format = 'Y-m-d')
+    {
         if ($this->validateIDCard($pid)) {
             $iYear = substr($pid, 6, 4);
             $iMonth = substr($pid, 10, 2);
-            $iDay = substr( $pid, 12, 2 );
-            $str = date($format, mktime(0,0,0,$iMonth,$iDay,$iYear));
+            $iDay = substr($pid, 12, 2);
+            $str = date($format, mktime(0, 0, 0, $iMonth, $iDay, $iYear));
+
             return $str;
         } else {
             return false;
         }
     }
-
 }
-?>

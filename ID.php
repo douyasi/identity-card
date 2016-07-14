@@ -3586,7 +3586,7 @@ class ID
      */
     private function checkFirst($pid)
     {
-        return preg_match('/^\d{6}(18|19|20)\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/', $pid);
+        return preg_match('/^\d{6}(18|19|20)\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/', $pid);
     }
 
     /**
@@ -3647,20 +3647,7 @@ class ID
      *
      * @param string $pid 个人身份证证号
      *
-     * @return array 结果数组，示例：
-     *               array(
-     *               'status'  => true|false,  //校验状态
-     *               'result'  => '湖北省 黄冈市黄梅县' | '',  //完整地区
-     *               'provice' => '湖北省',  //省级
-     *               'city'    => '黄冈市',  //市级
-     *               'county'  => '黄梅县',  //县级
-     *               )
-     *               校验成功    则
-     *               array['status']返回true,
-     *               array['result']返回所在地区信息，需要特定的省市县级可以取对应的键名;
-     *               校验失败    则
-     *               array['status']返回false,
-     *               array['result']其它等均返回空串''.
+     * @return array 结果数组
      */
     public function getArea($pid)
     {

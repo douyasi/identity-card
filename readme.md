@@ -5,6 +5,12 @@ Identity Card（中国大陆）公民身份证类
 >   Chinese Identity Card package, data from `GB/T 2260-2007`.  
 
 
+[![Latest Stable Version](https://poser.pugx.org/douyasi/identity-card/v/stable.svg?format=flat-square)](https://packagist.org/packages/douyasi/identity-card)
+[![Latest Unstable Version](https://poser.pugx.org/douyasi/identity-card/v/unstable.svg?format=flat-square)](https://packagist.org/packages/douyasi/identity-card)
+[![License](https://poser.pugx.org/douyasi/identity-card/license?format=flat-square)](https://packagist.org/packages/douyasi/identity-card)
+[![Total Downloads](https://poser.pugx.org/douyasi/identity-card/downloads?format=flat-square)](https://packagist.org/packages/douyasi/identity-card)
+
+
 ### 安装说明(Installation)
 
 在 `composer` 中添加依赖：
@@ -32,13 +38,13 @@ composer require "douyasi/identity-card:~1.0"
 创建ID类的实例，然后调用其对应方法。`Laravel 5` 测试路由示例：
 
 ```php
-Route::get('test', function(){
-	$ID = new Douyasi\IdentityCard\ID;
-	$is_pass = $ID->validateIDCard('42032319930606629x');
-	$area = $ID->getArea('42032319930606629x');
-	$gender = $ID->getGender('42032319930606629x');
-	$birthday = $ID->getBirth('42032319930606629x');
-	return compact('is_pass', 'area', 'gender', 'birthday');
+Route::get('test', function() {
+    $ID = new Douyasi\IdentityCard\ID;
+    $is_pass = $ID->validateIDCard('42032319930606629x');
+    $area = $ID->getArea('42032319930606629x');
+    $gender = $ID->getGender('42032319930606629x');
+    $birthday = $ID->getBirth('42032319930606629x');
+    return compact('is_pass', 'area', 'gender', 'birthday');
 });
 ```
 

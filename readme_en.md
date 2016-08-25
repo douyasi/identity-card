@@ -1,40 +1,29 @@
-中国（大陆）公民身份证类
-------------------------
+Chinese Identity Card package
+-----------------------------
 
->   中国（大陆）公民身份证类包，数据来自国标 `GB/T 2260-2007` (中华人民共和国行政区划代码 标准) 。  
-
+>   Chinese Identity Card (Mainland China) package, data from `GB/T 2260-2007`.  
 
 [![Latest Stable Version](https://poser.pugx.org/douyasi/identity-card/v/stable.svg?format=flat-square)](https://packagist.org/packages/douyasi/identity-card)
 [![Latest Unstable Version](https://poser.pugx.org/douyasi/identity-card/v/unstable.svg?format=flat-square)](https://packagist.org/packages/douyasi/identity-card)
 [![License](https://poser.pugx.org/douyasi/identity-card/license?format=flat-square)](https://packagist.org/packages/douyasi/identity-card)
 [![Total Downloads](https://poser.pugx.org/douyasi/identity-card/downloads?format=flat-square)](https://packagist.org/packages/douyasi/identity-card)
 
+[简体中文读我](readme.md)
 
-[ENGLISH README](readme_en.md)
+### Installation
 
-### 安装说明
-
-在 `composer` 中添加依赖：
-
-```json
-    "require": {
-        "douyasi/identity-card": "~1.0"
-    }
-```
-
-然后在命令行窗体里执行 `composer update` 命令，或者参考下面直接使用 `composer require` 命令：
+Get [Composer](https://getcomposer.org/), then run in terminal:
 
 ```bash
 cd /path/to/your-project
 composer require "douyasi/identity-card:~1.0"
 ```
 
-### 使用说明(Usage and Example)
+### Usage and Example
 
+#### Example in `Laravel 5` :
 
-#### `Laravel` 示例代码：
-
-创建ID类的实例，然后调用其对应方法。`Laravel 5` 测试路由示例：
+You can using the following functions to get identity card information.
 
 ```php
 Route::get('test', function() {
@@ -47,9 +36,9 @@ Route::get('test', function() {
 });
 ```
 
-#### 结果集：
+#### Result :
 
-上面测试路由将返回下面 `json` 数据响应：
+You will get some `json` response data like below:
 
 ```json
 {
@@ -66,4 +55,6 @@ Route::get('test', function() {
 }
 ```
 
->   如果身份证校验通过，`passed` 返回 `true` ，否则返回 `false` 。其它字段（如 `eara` 、 `gender` 和 `birthday` ）顾名思义，就不做解释了。
+>   If the identity-card number is passed, the `passed` filed will return `true`, otherwise return `false`. The meanings of other fields (such as `area` `gender` & `birthday`) tell themselves.
+
+

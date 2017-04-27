@@ -46,7 +46,7 @@ You will get some `json` response data like below:
     "area":{
             "status":true,
             "result":"湖北省 十堰市竹山县",
-            "provice":"湖北省",
+            "province":"湖北省",
             "city":"十堰市",
             "county":"竹山县"
         },

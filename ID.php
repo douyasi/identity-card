@@ -3662,11 +3662,11 @@ class ID
         if (!array_key_exists($provice, $Provinces)) {
             // 非法地区
             return array(
-                        'status' => false,
-                        'result' => '',
-                        'provice' => '',
-                        'city' => '',
-                        'county' => '',
+                        'status'   => false,
+                        'result'   => '',
+                        'province' => '',
+                        'city'     => '',
+                        'county'   => '',
                     );
         } else {
             if (array_key_exists($county, $Divisions)) {
@@ -3674,19 +3674,19 @@ class ID
                 $result = $Divisions[$sufix_provice].' '.$Divisions[$sufix_city].''.$Divisions[$county];
 
                 return array(
-                            'status' => true,
-                            'result' => $result,
-                            'provice' => $Divisions[$sufix_provice],
-                            'city' => $Divisions[$sufix_city],
-                            'county' => $Divisions[$county],
+                            'status'   => true,
+                            'result'   => $result,
+                            'province' => $Divisions[$sufix_provice],
+                            'city'     => $Divisions[$sufix_city],
+                            'county'   => $Divisions[$county],
                         );
             } else {
                 return array(
-                            'status' => false,
-                            'result' => '',
-                            'provice' => '',
-                            'city' => '',
-                            'county' => '',
+                            'status'   => false,
+                            'result'   => '',
+                            'province' => '',
+                            'city'     => '',
+                            'county'   => '',
                         );
             }
         }

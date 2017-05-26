@@ -18,6 +18,22 @@ class ID
 {
     private $pdo = null;
 
+    protected $aConstellations = array(
+                                "水瓶座",
+                                "双鱼座",
+                                "白羊座",
+                                "金牛座",
+                                "双子座",
+                                "巨蟹座",
+                                "狮子座",
+                                "处女座",
+                                "天秤座",
+                                "天蝎座",
+                                "射手座",
+                                "魔羯座"
+                            );
+    protected $aConstellationEdgeDays = { 20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22 }
+
     /**
      * 使用 PDO 链接目标 sqlite 数据库
      * 
@@ -190,7 +206,7 @@ class ID
                             'province' => $_province_name,
                             'city'     => $_city_name,
                             'county'   => $_county['name'],
-                            'using'    =>  $_county['status'],  // 行政区划代码是否仍在使用，1 是 0 否
+                            'using'    => $_county['status'],  // 行政区划代码是否仍在使用，1 是 0 否
                         );
             }
         }
@@ -242,4 +258,47 @@ class ID
             return false;
         }
     }
+
+    /**
+     * 获取年龄
+     * @param string $pid    个人身份证证号
+     * 
+     * @return int|bool 返回年龄，身份证或出生年月日未校验通过则返回false
+     */
+    public function getAge($pid)
+    {
+        if ($this->validateIDCard($pid)) {
+            $birthday =  strtotime(substr($idcard,6,8));
+            $today = strtotime('today');
+            $diff = floor(($today-$birthday)/86400/365);
+            $age = strtotime(substr($idcard,6,8).' +'.$diff.'years') > $today ? ($diff+1) : $diff;
+            return $age;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 获取星座
+     * @param string $pid    个人身份证证号
+     *
+     * @return string|bool 返回星座，身份证或出生年月日未校验通过则返回false
+     */
+    public function getConstellation($pid)
+    {
+        if ($this->validateIDCard($pid)) {
+            $month = (int) substr($pid, 10, 2);
+            $day = (int) substr($pid, 12, 2);
+            if ($day < $this->aConstellationEdgeDays[$month]) {
+                $month = $month - 1;
+            }
+            if ($month > 0) {
+                return $this->aConstellations[$month];
+            }
+            return $this->aConstellations[11];
+        } else {
+            return false;
+        }
+    }
+
 }

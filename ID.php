@@ -32,7 +32,7 @@ class ID
                                 "射手座",
                                 "魔羯座"
                             );
-    protected $aConstellationEdgeDays = { 20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22 }
+    protected $aConstellationEdgeDays = array(20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22);
 
     /**
      * 使用 PDO 链接目标 sqlite 数据库

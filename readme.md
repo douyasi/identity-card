@@ -24,7 +24,7 @@
 
 ```bash
 cd /path/to/your-project
-composer require "douyasi/identity-card:~1.0"
+composer require "douyasi/identity-card:~2.0"
 ```
 
 特别提示：

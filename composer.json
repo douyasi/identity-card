@@ -15,5 +15,8 @@
         }
     },
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "ext-pdo": "*",
+        "ext-pdo_sqlite": "*"
+    }
 }

@@ -16,7 +16,7 @@ Get [Composer](https://getcomposer.org/), then run in terminal:
 
 ```bash
 cd /path/to/your-project
-composer require "douyasi/identity-card:~1.0"
+composer require "douyasi/identity-card:~2.0"
 ```
 
 Note：

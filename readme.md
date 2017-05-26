@@ -16,7 +16,7 @@
 
 ```json
     "require": {
-        "douyasi/identity-card": "~1.0"
+        "douyasi/identity-card": "~2.0"
     }
 ```
 

@@ -58,7 +58,7 @@ function main() {
     $places = array();
 
     // 行政区划新老历史沿革 数据 网址
-    $urls = [
+    $urls = array(
         '201703' => 'http://www.mca.gov.cn/article/sj/tjbz/a/2017/201703/201705051139.html',
         '201702' => 'http://www.mca.gov.cn/article/sj/tjbz/a/2017/0327/201705051134.html',
         '201701' => 'http://www.mca.gov.cn/article/sj/tjbz/a/2017/20170301/2017%E5%B9%B41%E6%9C%88%E5%8E%BF%E4%BB%A5%E4%B8%8A%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E4%BB%A3%E7%A0%81.html',
@@ -98,17 +98,17 @@ function main() {
         '1982' => 'http://files2.mca.gov.cn/www/201512/20151203093700735.htm',
         '1981' => 'http://files2.mca.gov.cn/www/201512/20151203093558121.htm',
         '1980' => 'http://files2.mca.gov.cn/www/201512/20151203093558121.htm',
-    ];
+    );
     foreach ($urls as $key => $url) {
         analyze_data($url, $key, $places);
     }
     ksort($places);
-    $code = '<?php'.PHP_EOL.'$aPlaces = array('.PHP_EOL;
+    $code = '<?php'.PHP_EOL.'// 硬编码数据 1980-2017 年行政区划历史变更数据'.PHP_EOL.'$aDivisions = array('.PHP_EOL;
     foreach ($places as $id => $name) {
         $code .= "    '".$id."' => '".$name."',".PHP_EOL;
     }
     $code .= ');'.PHP_EOL;
-    $php_data_file = __DIR__.'/data.php';
+    $php_data_file = __DIR__.'/data/all.php';
     if (file_exists($php_data_file)) {
         unlink($php_data_file);
     }

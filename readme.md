@@ -27,6 +27,10 @@ cd /path/to/your-project
 composer require "douyasi/identity-card:~1.0"
 ```
 
+特别提示：
+
+本插件需要使用 `PDO` 连接 `sqlite` 数据库，故需要安装和开启 `pdo` 和 `pdo_sqlite` 组件。
+
 ### 使用说明
 
 #### `Laravel` 示例代码
@@ -56,7 +60,8 @@ Route::get('test', function() {
             "result":"湖北省 十堰市竹山县",
             "province":"湖北省",
             "city":"十堰市",
-            "county":"竹山县"
+            "county":"竹山县",
+            "using": 1
         },
     "gender":"m",
     "birthday":"1993-06-06"
@@ -64,6 +69,8 @@ Route::get('test', function() {
 ```
 
 >   如果身份证证号校验通过，`passed` 返回 `true` ，否则返回 `false` 。其它字段（如 `eara` 、 `gender` 和 `birthday` ）顾名思义，就不做解释了。
+
+>   `2.0+` 版本 `getArea()` 方法返回中新增 `using` 字段，表示行政区划代码当前是否还在使用中。如果为 `1` ，说明此身份证证号前6位数字代码（也就是行政区划代码，如 `420323` ）仍在使用，可以新签发（非续签非补办）此行政区划代码打头的身份证；为 `0` 表示行政区划已经发生变更（地名可能不变），不再新签发此行政区划代码打头的身份证。
 
 #### 参考资源
 

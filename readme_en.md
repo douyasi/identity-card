@@ -19,6 +19,10 @@ cd /path/to/your-project
 composer require "douyasi/identity-card:~1.0"
 ```
 
+Note：
+
+Using `PDO` to connect `sqlite` database in this plugin, please make sure `pdo` and `pdo_sqlite` extensions have been installed.
+
 ### Usage and Example
 
 #### Example in `Laravel 5` :
@@ -48,7 +52,8 @@ You will get some `json` response data like below:
             "result":"湖北省 十堰市竹山县",
             "province":"湖北省",
             "city":"十堰市",
-            "county":"竹山县"
+            "county":"竹山县",
+            "using": 1
         },
     "gender":"m",
     "birthday":"1993-06-06"
@@ -57,4 +62,10 @@ You will get some `json` response data like below:
 
 >   If the identity-card number is passed, the `passed` filed will return `true`, otherwise return `false`. The meanings of other fields (such as `area` `gender` & `birthday`) tell themselves.
 
+>   `getArea()` will return a new `using` filed in verison `2.0+` . If this administrative-division-code (the top six digital number in identity-card, like `420323` ) is still in use, it will be `1` , otherwise `0` .
 
+#### Reference Resources (in Chinese)
+
+- 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/)
+- 民政部 [县级以上行政区划变更情况](http://xzqh.mca.gov.cn/description?dcpid=1)
+- 民政部 [中华人民共和国行政区划代码](http://www.mca.gov.cn/article/sj/tjbz/a/)

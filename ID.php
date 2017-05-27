@@ -18,6 +18,8 @@ class ID
 {
     private $pdo = null;
 
+    protected $pid = null;
+
     protected $aConstellations = array(
                                 "水瓶座",
                                 "双鱼座",
@@ -260,7 +262,9 @@ class ID
     }
 
     /**
-     * 获取年龄
+     * 获取年龄.
+     * 计算方法不是年份直接减，而是按秒算年，满年则加，未满向下取整，故实际算出的年龄可能比常规和虚岁小到1-2岁
+     * 
      * @param string $pid    个人身份证证号
      * 
      * @return int|bool 返回年龄，身份证或出生年月日未校验通过则返回false
@@ -268,10 +272,10 @@ class ID
     public function getAge($pid)
     {
         if ($this->validateIDCard($pid)) {
-            $birthday =  strtotime(substr($idcard,6,8));
+            $birthday =  strtotime(substr($pid,6,8));
             $today = strtotime('today');
             $diff = floor(($today-$birthday)/86400/365);
-            $age = strtotime(substr($idcard,6,8).' +'.$diff.'years') > $today ? ($diff+1) : $diff;
+            $age = strtotime(substr($pid,6,8).' +'.$diff.'years') > $today ? ($diff+1) : $diff;
             return $age;
         } else {
             return false;
@@ -279,7 +283,8 @@ class ID
     }
 
     /**
-     * 获取星座
+     * 获取星座.
+     * 
      * @param string $pid    个人身份证证号
      *
      * @return string|bool 返回星座，身份证或出生年月日未校验通过则返回false

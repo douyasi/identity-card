@@ -81,12 +81,12 @@ Route::get('test', function() {
 
 ### API列表
 
-- `validateIDCard()` 获取身份证号码校验结果;
-- `getArea()` 获取身份证号码原始地区信息;
-- `getGender()` 获取性别，`m` 男性 `f` 女性;
-- `getBirth()` 获取出生年月日;
-- `getAge()` 获取年龄;
-- `getConstellation()` 获取星座.
+- `validateIDCard()` 获取身份证号码校验结果；
+- `getArea()` 获取身份证号码原始地区信息；
+- `getGender()` 获取性别，`m` 男性 `f` 女性；
+- `getBirth()` 获取出生年月日；
+- `getAge()` 获取年龄；
+- `getConstellation()` 获取星座。
 
 >   关于星座月日范围，会有上下 `1-2` 天的浮动，这里以维基百科资料为主。
 >   维基百科地址： https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D%A0%E6%98%9F%E8%A1%93 .

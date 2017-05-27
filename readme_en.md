@@ -36,6 +36,8 @@ Route::get('test', function() {
     $area = $ID->getArea('42032319930606629x');
     $gender = $ID->getGender('42032319930606629x');
     $birthday = $ID->getBirth('42032319930606629x');
+    $age = $ID->getAge('42032319930606629x');
+    $constellation = $ID->getConstellation('42032319930606629x');
     return compact('passed', 'area', 'gender', 'birthday');
 });
 ```
@@ -46,25 +48,59 @@ You will get some `json` response data like below:
 
 ```json
 {
-    "passed":true,
-    "area":{
-            "status":true,
-            "result":"湖北省 十堰市竹山县",
-            "province":"湖北省",
-            "city":"十堰市",
-            "county":"竹山县",
+    "status": true,
+    "result": {
+        "is_pass": true,
+        "area": {
+            "status": true,
+            "result": "湖北省 十堰市竹山县",
+            "province": "湖北省",
+            "city": "十堰市",
+            "county": "竹山县",
             "using": 1
         },
-    "gender":"m",
-    "birthday":"1993-06-06"
+        "gender": "m",
+        "birthday": "1993-06-06",
+        "age": 23,
+        "constellation": "双子座"
+    }
 }
 ```
 
->   If the identity-card number is passed, the `passed` filed will return `true`, otherwise return `false`. The meanings of other fields (such as `area` `gender` & `birthday`) tell themselves.
+>   If the identity-card number is passed, the `passed` filed will return `true`, otherwise return `false`. The meanings of other fields (such as `area` `gender`   `birthday` `age` & `constellation`) tell themselves.
 
 >   `getArea()` will return a new `using` filed in verison `2.0+` . If this administrative-division-code (the top six digital number in identity-card, like `420323` ) is still in use, it will be `1` , otherwise `0` .
 
-#### Reference Resources (in Chinese)
+### API List
+
+- `validateIDCard()` validate identity-card and get result,
+- `getArea()` get original area information from identity-card,
+- `getGender()` get gender information，`m` for male, `f` for female,
+- `getBirth()` get birthday,
+- `getAge()` get age,
+- `getConstellation()` get constellation.
+
+>   The approximate dates of
+Sun signs from WIKIPEDIA: https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D%A0%E6%98%9F%E8%A1%93 .
+
+```
+'水瓶座',  // 1.21-2.19 [Aquarius]
+'双鱼座',  // 2.20-3.20 [Pisces]
+'白羊座',  // 3.21-4.19 [Aries]
+'金牛座',  // 4.20-5.20 [Taurus]
+'双子座',  // 5.21-6.21 [Gemini]
+'巨蟹座',  // 6.22-7.22 [Cancer]
+'狮子座',  // 7.23-8.22 [Leo]
+'处女座',  // 8.23-9.22 [Virgo]
+'天秤座',  // 9.23-10.23 [Libra]
+'天蝎座',  // 10.24-11.21 [Scorpio]
+'射手座',  // 11.22-12.20 [Sagittarius]
+'魔羯座',  // 12.21-1.20 [Capricorn]
+```
+
+online `API` address: http://www.yascmf.com/api/identity-card?pid=42032319930606629x .
+
+### Reference Resources (in Chinese)
 
 - 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/)
 - 民政部 [县级以上行政区划变更情况](http://xzqh.mca.gov.cn/description?dcpid=1)

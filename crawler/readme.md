@@ -28,10 +28,10 @@ php crawler.php
 
 在使用中，遇到问题可以通过以下方式联系作者我。
 
-Email: raoyc <raoyc2009@gmail.com>
-官网：http://douyasi.com
-QQ群：260655062
-Github: [ycrao](https://github.com/ycrao)
+- Email: raoyc <raoyc2009@gmail.com>
+- 官网：http://douyasi.com
+- QQ群：260655062
+- Github: [ycrao](https://github.com/ycrao)
 
 
 

@@ -38,7 +38,7 @@ Route::get('test', function() {
     $birthday = $ID->getBirth('42032319930606629x');
     $age = $ID->getAge('42032319930606629x');
     $constellation = $ID->getConstellation('42032319930606629x');
-    return compact('passed', 'area', 'gender', 'birthday');
+    return compact('passed', 'area', 'gender', 'birthday', 'age', 'constellation');
 });
 ```
 

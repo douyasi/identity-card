@@ -100,6 +100,10 @@ Sun signs from WIKIPEDIA: https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D
 
 online `API` address: http://www.yascmf.com/api/identity-card?pid=42032319930606629x .
 
+### Crawler
+
+See [`readme`](crawler/readme.md) file under `crawler` folder.
+
 ### Reference Resources (in Chinese)
 
 - 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/)

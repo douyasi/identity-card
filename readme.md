@@ -108,6 +108,10 @@ Route::get('test', function() {
 
 在线 `API` 地址: http://www.yascmf.com/api/identity-card?pid=42032319930606629x .
 
+### 数据爬虫
+
+请参考 `crawler` 目录下 [`readme`](crawler/readme.md) 文件。
+
 ### 参考资源
 
 - 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/)

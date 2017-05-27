@@ -23,13 +23,6 @@ class ID
      */
     private $pdo = null;
 
-    /**
-     * 身份证证号对象
-     * 
-     * @var null
-     */
-    protected $pid = null;
-
     /** 
      * 星座（资料来自维基百科 https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D%A0%E6%98%9F%E8%A1%93 ）
      * 关于星座月日范围，会有上下 1-2 天的浮动，这里以维基百科资料为主

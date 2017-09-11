@@ -39,7 +39,7 @@ composer require "douyasi/identity-card:~2.0"
 
 ```php
 Route::get('test', function() {
-    $ID = new Douyasi\IdentityCard\ID;
+    $ID = new Douyasi\IdentityCard\ID();
     $passed = $ID->validateIDCard('42032319930606629x');
     $area = $ID->getArea('42032319930606629x');
     $gender = $ID->getGender('42032319930606629x');

@@ -210,28 +210,32 @@ class ID
      */
     public function getArea($pid)
     {
+        $status = $this->validateIDCard($pid);
         $provice       = substr($pid, 0, 2);
         $sufix_provice = substr($pid, 0, 2).'0000';  //获取省级行政区划代码
         $sufix_city    = substr($pid, 0, 4).'00';  //获取地市级行政区划代码
         $county        = substr($pid, 0, 6);  //获取县级行政区划代码
         $result        = '';
-        if (array_key_exists($provice, $this->aProvinces)) {
+        if (array_key_exists($provice, $this->aProvinces) && $status) {
+            $_province = $this->getDivision($sufix_provice);  // 省级
+            $_province_name = isset($_province['name']) ? $_province['name'] : '';
+            $_city = $this->getDivision($sufix_city);  // 地市级
+            $_city_name = isset($_city['name']) ? $_city['name'] : '';
             $_county = $this->getDivision($county);  // 县级
             if ($_county) {
-                $_city          = $this->getDivision($sufix_city);  // 地市级
-                $_province      = $this->getDivision($sufix_provice);  // 省级
-                $_city_name     = isset($_city['name']) ? $_city['name'] : '';
-                $_province_name = isset($_province['name']) ? $_province['name'] : '';
-                $result         = $_province_name.' '.$_city_name.''.$_county['name'];
-                return array(
-                            'status'   => true,
-                            'result'   => $result,
-                            'province' => $_province_name,
-                            'city'     => $_city_name,
-                            'county'   => $_county['name'],
-                            'using'    => $_county['status'],  // 行政区划代码是否仍在使用，1 是 0 否
-                        );
+                $result = $_province_name.' '.$_city_name.''.$_county['name'];
+            } else {
+                $result = $_province_name.' '.$_city_name;
             }
+            return array(
+                        'status'   => true,
+                        'result'   => $result,
+                        'province' => $_province_name,
+                        'city'     => $_city_name,
+                        'county'   => $_county['name'],
+                        'using'    => isset($_county['status']) ? $_county['status'] : 0,  // 行政区划代码是否仍在使用，1 是 0 否
+                    );
+
         }
         return array(
                         'status'   => false,

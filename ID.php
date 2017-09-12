@@ -232,7 +232,7 @@ class ID
                         'result'   => $result,
                         'province' => $_province_name,
                         'city'     => $_city_name,
-                        'county'   => $_county['name'],
+                        'county'   => isset($_county['name']) ? $_county['name'] : '',
                         'using'    => isset($_county['status']) ? $_county['status'] : 0,  // 行政区划代码是否仍在使用，1 是 0 否
                     );
 

@@ -318,7 +318,7 @@ class ID
             if ($day < $this->aConstellationEdgeDays[$month]) {
                 $month = $month - 1;
             }
-            if ($month > 0) {
+            if ($month >= 0) {
                 return $this->aConstellations[$month];
             }
             return $this->aConstellations[11];

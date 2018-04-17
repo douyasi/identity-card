@@ -46,7 +46,7 @@ function get_request($url)
     $res = curl_exec($con);
     $errno = curl_errno($con);
     if ($errno) {
-        throw \Exception('Curl error : '.curl_error($con)) ;
+        throw new \Exception('Curl error : '.curl_error($con)) ;
     }
     curl_close($con);
     return $res;

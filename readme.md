@@ -10,6 +10,11 @@
 
 [ENGLISH README](readme_en.md)
 
+### 其它语言实现版本
+
+- [Node/Javascript 实现版本](https://github.com/ycrao/id.js)
+- [Rust 实现版本](https://github.com/ycrao/idrs)
+
 ### 安装说明
 
 在 `composer` 中添加依赖：

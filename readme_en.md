@@ -10,6 +10,11 @@ Chinese Identity Card package
 
 [简体中文读我](readme.md)
 
+### Other Language Versions
+
+- [Node/Javascript version](https://github.com/ycrao/id.js)
+- [Rust version](https://github.com/ycrao/idrs)
+
 ### Installation
 
 Get [Composer](https://getcomposer.org/), then run in terminal:

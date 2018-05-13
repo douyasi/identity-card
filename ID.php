@@ -211,13 +211,13 @@ class ID
     public function getArea($pid)
     {
         $status = $this->validateIDCard($pid);
-        $provice       = substr($pid, 0, 2);
-        $sufix_provice = substr($pid, 0, 2).'0000';  //获取省级行政区划代码
+        $province       = substr($pid, 0, 2);
+        $sufix_province = substr($pid, 0, 2).'0000';  //获取省级行政区划代码
         $sufix_city    = substr($pid, 0, 4).'00';  //获取地市级行政区划代码
         $county        = substr($pid, 0, 6);  //获取县级行政区划代码
         $result        = '';
-        if (array_key_exists($provice, $this->aProvinces) && $status) {
-            $_province = $this->getDivision($sufix_provice);  // 省级
+        if (array_key_exists($province, $this->aProvinces) && $status) {
+            $_province = $this->getDivision($sufix_province);  // 省级
             $_province_name = isset($_province['name']) ? $_province['name'] : '';
             $_city = $this->getDivision($sufix_city);  // 地市级
             $_city_name = isset($_city['name']) ? $_city['name'] : '';

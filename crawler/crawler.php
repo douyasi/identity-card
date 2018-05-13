@@ -63,7 +63,7 @@ function main() {
         analyze_data($url, $key, $places);
     }
     ksort($places);
-    $code = '<?php'.PHP_EOL.'// 硬编码数据 1980-2017 年行政区划历史变更数据'.PHP_EOL.'$aDivisions = array('.PHP_EOL;
+    $code = '<?php'.PHP_EOL.'// 硬编码数据 1980-'.date('Y').' 年行政区划历史变更数据'.PHP_EOL.'$aDivisions = array('.PHP_EOL;
     foreach ($places as $id => $name) {
         $code .= "    '".$id."' => '".$name."',".PHP_EOL;
     }

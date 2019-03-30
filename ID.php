@@ -293,10 +293,10 @@ class ID
     public function getAge($pid)
     {
         if ($this->validateIDCard($pid)) {
-            $birthday =  strtotime(substr($pid,6,8));
+            $birthday =  strtotime(substr($pid, 6, 8));
             $today    = strtotime('today');
-            $diff     = floor(($today-$birthday)/86400/365);
-            $age      = strtotime(substr($pid,6,8).' +'.$diff.'years') > $today ? ($diff+1) : $diff;
+            $diff     = floor(($today - $birthday)/86400/365);
+            $age      = strtotime(substr($pid, 6, 8).' + '.$diff.' years') > $today ? ($diff - 1) : $diff;
             return $age;
         } else {
             return false;

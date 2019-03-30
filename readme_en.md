@@ -15,7 +15,7 @@ Chinese Identity Card package
 - [Node/Javascript version](https://github.com/ycrao/id.js)
 - [Rust version](https://github.com/ycrao/idrs)
 
-### Changelog
+### Change Log
 
 - At 2016 year, version `1.0` - `1.2` published, data from China national standard `GB/T 2260-2007`, using PHP array to store them.
 - 2017-05-26, First version (`v2.0`) of 2.x published, starting use `SQLite` as datasource with crawler scripts opened.

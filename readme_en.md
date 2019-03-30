@@ -23,7 +23,7 @@ Chinese Identity Card package
 - 2017-12-03, `2.4` published, fix get wrong constellation bug.
 - 2018-03-27, `2.5` published, update China divisions data to 2018-01.
 - 2018-05-13, `2.6` published, implantations to `Node/Javascript` and `Rust` lang.
-- 2019-03-30, `2.7` published, update China divisions data to `2019-02` and fix return wrong age. Next update will/may be at `2020-03`.
+- 2019-03-31, `2.7` published, update China divisions data to `2019-02` and fix return wrong age. Next update will/may be at `2020-03`.
 
 ### Installation
 

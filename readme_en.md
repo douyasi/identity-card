@@ -118,7 +118,7 @@ online `API` address: http://www.yascmf.com/api/identity-card?pid=42032319930606
 
 ### Crawler
 
-See [`readme`](crawler/readme.md) file under `crawler` folder.
+See [`readme`](https://github.com/douyasi/china-divisions/blob/master/crawler/readme.md) file under `crawler` folder.
 
 ### Reference Resources (in Chinese)
 

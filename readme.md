@@ -126,7 +126,7 @@ Route::get('test', function() {
 
 ### 数据爬虫
 
-请参考 `crawler` 目录下 [`readme`](crawler/readme.md) 文件。
+请参考 `crawler` 目录下 [`readme`](https://github.com/douyasi/china-divisions/blob/master/crawler/readme.md) 文件。
 
 ### 参考资源
 

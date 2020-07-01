@@ -1,11 +1,10 @@
 <?php
 
 return array(
-    '202002' => 'http://www.mca.gov.cn/article/sj/xzqh/2020/2020/202003301019.html',
-    '202001' => 'http://www.mca.gov.cn/article/sj/xzqh/2020/2020/202003061536.html',
-    '2019' => 'http://www.mca.gov.cn/article/sj/xzqh/1980/2019/202002281436.html',
-    '2018' => 'http://www.mca.gov.cn/article/sj/xzqh/1980/201903/201903011447.html',
-    '2017' => 'http://www.mca.gov.cn/article/sj/xzqh/1980/201803/201803131454.html',
+    '201902' => 'http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/20190203221738.html',
+    '201901' => 'http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/201902061009.html',
+    '2018' => 'http://www.mca.gov.cn/article/sj/xzqh/1980/2019/201903011116.html',
+    '2017' => 'http://www.mca.gov.cn/article/sj/tjbz/a/2018/201803131439.html',
     '2016' => 'http://www.mca.gov.cn/article/sj/xzqh/1980/201705/201705311652.html',
     '2015' => 'http://www.mca.gov.cn/article/sj/tjbz/a/2015/201706011127.html',
     '2014' => 'http://files2.mca.gov.cn/cws/201502/20150225163817214.html',

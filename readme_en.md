@@ -24,7 +24,8 @@ Chinese Identity Card package
 - 2018-03-27, `2.5` published, update China divisions data to `2018-01`.
 - 2018-05-13, `2.6` published, implantations to `Node/Javascript` and `Rust` lang.
 - 2019-03-31, `2.7` published, update China divisions data to `2019-02` and fix return wrong age. Next update will/may be at March 2020.
-- 2020-06-29, `2.8` published, update China divisions data to `2020-02` (due to COVID-19). Next update will/may be at April 2021.
+- 2020-06-29, `2.8` published, update China divisions data to `2020-02` (due to COVID-19). 
+- 2020-10-10, `2.9` published, update China divisions data to `2020-08`, crawler scripts and history data are removed. Next update will/may be at April 2021.
 
 ### Installation
 
@@ -118,7 +119,7 @@ online `API` address: http://www.yascmf.com/api/identity-card?pid=42032319930606
 
 ### Crawler
 
-See [`readme`](crawler/readme.md) file under `crawler` folder.
+See [`readme`](https://github.com/douyasi/china-divisions/tree/master/crawler) file under `crawler` folder in `china-divisions` repo.
 
 ### Reference Resources (in Chinese)
 

@@ -14,7 +14,7 @@
 
 - [Node/Javascript 实现版本](https://github.com/ycrao/id.js)
 - [Rust 实现版本](https://github.com/ycrao/idrs)
-- [省市县三级联动地址效果](https://raoyc.com/address-selector/)
+- 扩展与延伸：[省市县三级联动地址效果](https://raoyc.com/address-selector/)，使用的是最新 `2021` 年数据，需要做额外转换，转换好之后的 JS 文件大小约为 `99KB`，可以点 [此](https://raoyc.com/address-selector/divisions.js) 查看。
 
 ### 版本更新记录
 

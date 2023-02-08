@@ -26,6 +26,7 @@ Chinese Identity Card package
 - 2019-03-31, `2.7` published, update China divisions data to `2019-02` and fix return wrong age. Next update will/may be at March 2020.
 - 2020-06-29, `2.8` published, update China divisions data to `2020-02` (due to COVID-19). 
 - 2020-10-10, `2.9` published, update China divisions data to `2020-08`, crawler scripts and history data are removed. Next update will/may be at April 2021.
+- 2023-02-08, `2.10` published, update China divisions data to `2021` year.
 
 ### Installation
 
@@ -123,6 +124,6 @@ See [`readme`](https://github.com/douyasi/china-divisions/tree/master/crawler) f
 
 ### Reference Resources (in Chinese)
 
-- 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/)
+- 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/)
 - 民政部 [县级以上行政区划变更情况](http://xzqh.mca.gov.cn/description?dcpid=1)
-- 民政部 [中华人民共和国行政区划代码](http://www.mca.gov.cn/article/sj/tjbz/a/)
+- 民政部 [中华人民共和国行政区划代码](https://www.mca.gov.cn/article/sj/xzqh/1980/)

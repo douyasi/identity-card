@@ -26,6 +26,7 @@ Chinese Identity Card package
 - 2019-03-31, `2.7` published, update China divisions data to `2019-02` and fix return wrong age. Next update will/may be at March 2020.
 - 2020-06-29, `2.8` published, update China divisions data to `2020-02` (due to COVID-19). 
 - 2020-10-10, `2.9` published, update China divisions data to `2020-08`, crawler scripts and history data are removed. Next update will/may be at April 2021.
+- 2023-02-08, `2.10` published, update China divisions data to `2021` year.
 
 ### Installation
 
@@ -42,24 +43,25 @@ Using `PDO` to connect `sqlite` database in this plugin, please make sure `pdo` 
 
 ### Usage and Example
 
-#### Example in `Laravel 5` :
+#### Example in `Laravel`
 
 You can using the following functions to get identity card information.
 
 ```php
 Route::get('test', function() {
     $ID = new Douyasi\IdentityCard\ID();
-    $passed = $ID->validateIDCard('42032319930606629x');
-    $area = $ID->getArea('42032319930606629x');
-    $gender = $ID->getGender('42032319930606629x');
-    $birthday = $ID->getBirth('42032319930606629x');
-    $age = $ID->getAge('42032319930606629x');
-    $constellation = $ID->getConstellation('42032319930606629x');
+    $pid = '42032319930606629x';
+    $passed = $ID->validateIDCard($pid);
+    $area = $ID->getArea($pid);
+    $gender = $ID->getGender($pid);
+    $birthday = $ID->getBirth($pid);
+    $age = $ID->getAge($pid);
+    $constellation = $ID->getConstellation($pid);
     return compact('passed', 'area', 'gender', 'birthday', 'age', 'constellation');
 });
 ```
 
-#### Result :
+#### Result
 
 You will get some `json` response data like below:
 
@@ -115,14 +117,12 @@ Sun signs from WIKIPEDIA: https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D
 '魔羯座',  // 12.21-1.20 [Capricorn]
 ```
 
-online `API` address: http://www.yascmf.com/api/identity-card?pid=42032319930606629x .
-
 ### Crawler
 
 See [`readme`](https://github.com/douyasi/china-divisions/tree/master/crawler) file under `crawler` folder in `china-divisions` repo.
 
 ### Reference Resources (in Chinese)
 
-- 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/)
+- 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/)
 - 民政部 [县级以上行政区划变更情况](http://xzqh.mca.gov.cn/description?dcpid=1)
-- 民政部 [中华人民共和国行政区划代码](http://www.mca.gov.cn/article/sj/tjbz/a/)
+- 民政部 [中华人民共和国行政区划代码](https://www.mca.gov.cn/article/sj/xzqh/1980/)

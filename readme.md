@@ -14,6 +14,7 @@
 
 - [Node/Javascript 实现版本](https://github.com/ycrao/id.js)
 - [Rust 实现版本](https://github.com/ycrao/idrs)
+- 扩展与延伸：[省市县三级联动地址效果](https://raoyc.com/address-selector/)，使用的是最新 `2021` 年数据，需要做额外转换，转换好之后的 JS 文件大小约为 `99KB`，可以点 [此](https://raoyc.com/address-selector/divisions.js) 查看。
 
 ### 版本更新记录
 
@@ -26,6 +27,7 @@
 - 2019年03月31日，发布 `2.7` 版本，采集截止到2019年02月的行政区划数据，并修复错误年龄问题。下次（数据库）更新，预计在2020年03月底。
 - 2020年06月29日，发布 `2.8` 版本，采集截止到2020年02月（可能受疫情影响，民政部官网也只更新到该月份）的行政区划数据。
 - 2020年10月10日，发布 `2.9` 版本，采集截止到2020年08月的行政区划数据，同时移除采集脚本和历史归档数据（已剥离到 [china-divisions](https://github.com/douyasi/china-divisions) 新项目中），下次数据库与版本更新预计在2021年04月底。
+- 2023年02月08日，发布 `2.10` 版本，采集并人工处理截止到2021年的行政区划数据。一直未发布新版本，原因并不在作者我，民政部数据源头在最近2年多更新很不及时，参考此[说明](https://github.com/douyasi/china-divisions/tree/master/db)。
 
 ### 安装说明
 
@@ -52,17 +54,18 @@ composer require "douyasi/identity-card:~2.0"
 
 #### `Laravel` 示例代码
 
-创建ID类的实例，然后调用其对应方法。`Laravel 5` 测试路由示例：
+创建ID类的实例，然后调用其对应方法。`Laravel` 测试路由示例：
 
 ```php
 Route::get('test', function() {
     $ID = new Douyasi\IdentityCard\ID();
-    $passed = $ID->validateIDCard('42032319930606629x');
-    $area = $ID->getArea('42032319930606629x');
-    $gender = $ID->getGender('42032319930606629x');
-    $birthday = $ID->getBirth('42032319930606629x');
-    $age = $ID->getAge('42032319930606629x');
-    $constellation = $ID->getConstellation('42032319930606629x');
+    $pid = '42032319930606629x';
+    $passed = $ID->validateIDCard($pid);
+    $area = $ID->getArea($pid);
+    $gender = $ID->getGender($pid);
+    $birthday = $ID->getBirth($pid);
+    $age = $ID->getAge($pid);
+    $constellation = $ID->getConstellation($pid);
     return compact('passed', 'area', 'gender', 'birthday', 'age', 'constellation');
 });
 ```
@@ -123,17 +126,15 @@ Route::get('test', function() {
 '魔羯座',  // 12.21-1.20 [Capricorn]
 ```
 
-在线 `API` 地址: http://www.yascmf.com/api/identity-card?pid=42032319930606629x .
-
 ### 数据爬虫
 
 请参考 `china-divisions` 项目 `crawler` 目录下 [`readme`](https://github.com/douyasi/china-divisions/tree/master/crawler) 文件。
 
 ### 参考资源
 
-- 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/)
+- 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/)
 - 民政部 [县级以上行政区划变更情况](http://xzqh.mca.gov.cn/description?dcpid=1)
-- 民政部 [中华人民共和国行政区划代码](http://www.mca.gov.cn/article/sj/tjbz/a/)
+- 民政部 [中华人民共和国行政区划代码](https://www.mca.gov.cn/article/sj/xzqh/1980/)
 
 
 

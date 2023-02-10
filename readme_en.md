@@ -43,24 +43,25 @@ Using `PDO` to connect `sqlite` database in this plugin, please make sure `pdo` 
 
 ### Usage and Example
 
-#### Example in `Laravel 5` :
+#### Example in `Laravel`
 
 You can using the following functions to get identity card information.
 
 ```php
 Route::get('test', function() {
     $ID = new Douyasi\IdentityCard\ID();
-    $passed = $ID->validateIDCard('42032319930606629x');
-    $area = $ID->getArea('42032319930606629x');
-    $gender = $ID->getGender('42032319930606629x');
-    $birthday = $ID->getBirth('42032319930606629x');
-    $age = $ID->getAge('42032319930606629x');
-    $constellation = $ID->getConstellation('42032319930606629x');
+    $pid = '42032319930606629x';
+    $passed = $ID->validateIDCard($pid);
+    $area = $ID->getArea($pid);
+    $gender = $ID->getGender($pid);
+    $birthday = $ID->getBirth($pid);
+    $age = $ID->getAge($pid);
+    $constellation = $ID->getConstellation($pid);
     return compact('passed', 'area', 'gender', 'birthday', 'age', 'constellation');
 });
 ```
 
-#### Result :
+#### Result
 
 You will get some `json` response data like below:
 
@@ -115,8 +116,6 @@ Sun signs from WIKIPEDIA: https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D
 '射手座',  // 11.22-12.20 [Sagittarius]
 '魔羯座',  // 12.21-1.20 [Capricorn]
 ```
-
-online `API` address: http://www.yascmf.com/api/identity-card?pid=42032319930606629x .
 
 ### Crawler
 

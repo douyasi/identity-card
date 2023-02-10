@@ -54,17 +54,18 @@ composer require "douyasi/identity-card:~2.0"
 
 #### `Laravel` 示例代码
 
-创建ID类的实例，然后调用其对应方法。`Laravel 5` 测试路由示例：
+创建ID类的实例，然后调用其对应方法。`Laravel` 测试路由示例：
 
 ```php
 Route::get('test', function() {
     $ID = new Douyasi\IdentityCard\ID();
-    $passed = $ID->validateIDCard('42032319930606629x');
-    $area = $ID->getArea('42032319930606629x');
-    $gender = $ID->getGender('42032319930606629x');
-    $birthday = $ID->getBirth('42032319930606629x');
-    $age = $ID->getAge('42032319930606629x');
-    $constellation = $ID->getConstellation('42032319930606629x');
+    $pid = '42032319930606629x';
+    $passed = $ID->validateIDCard($pid);
+    $area = $ID->getArea($pid);
+    $gender = $ID->getGender($pid);
+    $birthday = $ID->getBirth($pid);
+    $age = $ID->getAge($pid);
+    $constellation = $ID->getConstellation($pid);
     return compact('passed', 'area', 'gender', 'birthday', 'age', 'constellation');
 });
 ```
@@ -124,8 +125,6 @@ Route::get('test', function() {
 '射手座',  // 11.22-12.20 [Sagittarius]
 '魔羯座',  // 12.21-1.20 [Capricorn]
 ```
-
-在线 `API` 地址: http://www.yascmf.com/api/identity-card?pid=42032319930606629x .
 
 ### 数据爬虫
 

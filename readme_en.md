@@ -17,35 +17,33 @@ Chinese Identity Card package
 
 ### Change Log
 
-- At 2016 year, version `1.0` - `1.2` published, data from China national standard `GB/T 2260-2007`, using PHP array to store them.
-- 2017-05-26, First version (`2.0`) of 2.x published, starting use `SQLite` as datasource with crawler scripts opened.
-- 2017-09, `2.2` to `2.4` published, fix return null or wrong division bugs.
-- 2017-12-03, `2.4` published, fix get wrong constellation bug.
-- 2018-03-27, `2.5` published, update China divisions data to `2018-01`.
-- 2018-05-13, `2.6` published, implantations to `Node/Javascript` and `Rust` lang.
-- 2019-03-31, `2.7` published, update China divisions data to `2019-02` and fix return wrong age. Next update will/may be at March 2020.
-- 2020-06-29, `2.8` published, update China divisions data to `2020-02` (due to COVID-19). 
-- 2020-10-10, `2.9` published, update China divisions data to `2020-08`, crawler scripts and history data are removed. Next update will/may be at April 2021.
-- 2023-02-08, `2.10` published, update China divisions data to `2021` year.
+- In 2016, versions `1.0` to `1.2` were published, using data from China national standard `GB/T 2260-2007` and storing them in an array in PHP.
+- On May 26, 2017, the first version (`2.0`) of the `2.x` series was published, using SQLite as the data source with open crawler scripts.
+- From September 2017 to December 2017, versions `2.2` to `2.4` were published, fixing bugs that caused null returns or incorrect divisions.
+- On December 3, 2017, version `2.4` was published, fixing a bug that caused incorrect constellation results.
+- On March 27, 2018, version `2.5` was published, updating China divisions data to `2018-01`.
+- On May 13, 2018, version `2.6` was published, with implementations in `Node/Javascript` and `Rust` languages.
+- On March 31, 2019, version `2.7` was published, updating China divisions data to `2019-02` and fixing a bug that caused incorrect age returns. The next update will/may be in March 2020.
+- On June 29, 2020, version `2.8` was published, updating China divisions data to `2020-02` due to the COVID-19 pandemic.
+- On October 10, 2020, version `2.9` was published, updating China divisions data to `2020-08`. The crawler scripts and historical data were removed. The next update will/may be in April 2021.
+- On February 8, 2023, version `2.10` was published, updating China divisions data to the year `2021`.
 
 ### Installation
 
-Get [Composer](https://getcomposer.org/), then run in terminal:
+To install this package, first make sure you have [Composer](https://getcomposer.org/) installed on your system, and then run the following command in your terminal:
 
 ```bash
 cd /path/to/your-project
 composer require "douyasi/identity-card:~2.0"
 ```
 
-Note：
-
-Using `PDO` to connect `sqlite` database in this plugin, please make sure `pdo` and `pdo_sqlite` extensions have been installed.
+Please note that this package uses `PDO` to connect to an sqlite database. Therefore, make sure that the `pdo` and `pdo_sqlite` php extensions are installed on your system.
 
 ### Usage and Example
 
 #### Example in `Laravel`
 
-You can using the following functions to get identity card information.
+You can use the following functions to get identity card information:
 
 ```php
 Route::get('test', function() {
@@ -63,7 +61,7 @@ Route::get('test', function() {
 
 #### Result
 
-You will get some `json` response data like below:
+You will receive a `JSON` response with the following data:
 
 ```json
 {
@@ -86,43 +84,46 @@ You will get some `json` response data like below:
 }
 ```
 
->   If the identity-card number is passed, the `passed` filed will return `true`, otherwise return `false`. The meanings of other fields (such as `area` `gender`   `birthday` `age` & `constellation`) tell themselves.
+The `passed` field will return `true` if the identity-card number is valid, and `false` if it is not valid. The meaning of other fields such as `area`, `gender`, `birthday`, `age`, and `constellation` is self-explanatory.
 
->   `getArea()` will return a new `using` filed in verison `2.0+` . If this administrative-division-code (the top six digital number in identity-card, like `420323` ) is still in use, it will be `1` , otherwise `0` .
+Note that `getArea()` will return a new `using` field in version `2.0+`. If the administrative-division code (the top six digits of the identity-card number, e.g., `420323`) is still in use, the field will be `1`. Otherwise, it will be `0`.
 
 ### API List
 
-- `validateIDCard()` validate identity-card and get result,
-- `getArea()` get original area information from identity-card,
-- `getGender()` get gender information，`m` for male, `f` for female,
-- `getBirth()` get birthday,
-- `getAge()` get age,
-- `getConstellation()` get constellation.
+- `validateIDCard()` - Validate identity-card number and get the result.
+- `getArea()` - Get original area information from identity-card number.
+- `getGender()` - Get gender information. Returns `m` for male and `f` for female.
+- `getBirth()` - Get birthday from identity-card number.
+- `getAge()` - Get age from identity-card number.
+- `getConstellation()` - Get constellation from birth date.
 
->   The approximate dates of
-Sun signs from WIKIPEDIA: https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D%A0%E6%98%9F%E8%A1%93 .
+Note: The approximate dates of Sun signs from [Wikipedia](https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D%A0%E6%98%9F%E8%A1%93) are used for `getConstellation()` method.
 
 ```
-'水瓶座',  // 1.21-2.19 [Aquarius]
-'双鱼座',  // 2.20-3.20 [Pisces]
-'白羊座',  // 3.21-4.19 [Aries]
-'金牛座',  // 4.20-5.20 [Taurus]
-'双子座',  // 5.21-6.21 [Gemini]
-'巨蟹座',  // 6.22-7.22 [Cancer]
-'狮子座',  // 7.23-8.22 [Leo]
-'处女座',  // 8.23-9.22 [Virgo]
-'天秤座',  // 9.23-10.23 [Libra]
-'天蝎座',  // 10.24-11.21 [Scorpio]
-'射手座',  // 11.22-12.20 [Sagittarius]
-'魔羯座',  // 12.21-1.20 [Capricorn]
+'Aquarius',  // 1.21-2.19 [水瓶座]
+'Pisces',  // 2.20-3.20 [双鱼座]
+'Aries',  // 3.21-4.19 [白羊座]
+'Taurus',  // 4.20-5.20 [金牛座]
+'Gemini',  // 5.21-6.21 [双子座]
+'Cancer',  // 6.22-7.22 [巨蟹座]
+'Leo',  // 7.23-8.22 [狮子座]
+'Virgo',  // 8.23-9.22 [处女座]
+'Libra',  // 9.23-10.23 [天秤座]
+'Scorpio',  // 10.24-11.21 [天蝎座]
+'Sagittarius',  // 11.22-12.20 [射手座]
+'Capricorn'  // 12.21-1.20 [魔羯座]
 ```
 
 ### Crawler
 
-See [`readme`](https://github.com/douyasi/china-divisions/tree/master/crawler) file under `crawler` folder in `china-divisions` repo.
+See [`readme`](https://github.com/douyasi/china-divisions/tree/master/crawler) file under `crawler` folder in that [repo](https://github.com/douyasi/china-divisions).
 
-### Reference Resources (in Chinese)
+### Reference Resources (only in Chinese)
 
 - 中华人民共和国国家统计局 [行政区划代码](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/)
 - 民政部 [县级以上行政区划变更情况](http://xzqh.mca.gov.cn/description?dcpid=1)
 - 民政部 [中华人民共和国行政区划代码](https://www.mca.gov.cn/article/sj/xzqh/1980/)
+
+### Special Thanks
+
+![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)

@@ -17,8 +17,8 @@ Chinese Identity Card package
 
 ### Change Log
 
-- In 2016, versions 1.0 to 1.2 were published, using data from China national standard `GB/T 2260-2007` and storing them in an array in PHP.
-- On May 26, 2017, the first version (`2.0`) of the 2.x series was published, using SQLite as the data source with open crawler scripts.
+- In 2016, versions `1.0` to `1.2` were published, using data from China national standard `GB/T 2260-2007` and storing them in an array in PHP.
+- On May 26, 2017, the first version (`2.0`) of the `2.x` series was published, using SQLite as the data source with open crawler scripts.
 - From September 2017 to December 2017, versions `2.2` to `2.4` were published, fixing bugs that caused null returns or incorrect divisions.
 - On December 3, 2017, version `2.4` was published, fixing a bug that caused incorrect constellation results.
 - On March 27, 2018, version `2.5` was published, updating China divisions data to `2018-01`.
